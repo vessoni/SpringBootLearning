@@ -18,6 +18,11 @@ public class Student {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Student() {
+		
+		
+	}
 
 	public String getName() {
 		return name;
@@ -28,13 +33,45 @@ public class Student {
 	}
 	
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
 	private static void studentRepository() {
 		//studentList = new ArrayList<>(Arrays.asList(new Student("Alexandre"), new Student("teste")));
 		//Cria lista de Estudantes onde gera nomes aleatórios.
 		studentList = new ArrayList<Student>();
-	  	int numberOfStudents = 5;
+	  	int numberOfStudents = 2;
 		
-	  	for(int i = 0; i < numberOfStudents; i++) {
+	  	for(int i = 1; i < numberOfStudents; i++) {
 			Faker faker = new Faker();
 			String fakeName = faker.name().fullName();
 			studentList.add(new Student(i, fakeName));
